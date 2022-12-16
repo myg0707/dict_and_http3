@@ -60,7 +60,7 @@ def do_history(c, data):
     # 查询历史记录
     words = db.history(name)
     if not words:
-        c.send("没有找到历史记录".encode())
+        c.send("Fail".encode())
     else:
         c.send(words.encode())
 

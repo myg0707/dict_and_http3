@@ -104,10 +104,14 @@ class Database:
 
     # 查询历史记录
     def history(self, name):
-        sql = "select word from history where name='%s' order by time desc limit 10" % name
+        sql = "select name,word,time from history where name='%s' order by time desc limit 10" % name
         self.cur.execute(sql)
-        words = self.cur.fetchmany(10)
-        print(words)
-        if words:
-            return " ".join([item[0] for item in words])
-
+        hist = self.cur.fetchmany(10)
+        print(hist)
+        if hist:
+            # words_list = []
+            # for item in hist:
+            #     info = "%s %-16s %s" % item
+            #     words_list.append(info)
+            # return "#_#".join(words_list)
+            return "#_#".join(["%s %-16s %s" % item for item in hist])

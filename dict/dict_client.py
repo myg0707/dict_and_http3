@@ -33,7 +33,12 @@ def do_history(name):
     msg = "H %s" % name
     s.send(msg.encode())
     data = s.recv(2048).decode()
-    print("历史查询记录：", data)
+    if data == "Fail":
+        print("没有查询记录：")
+    else:
+        info = data.split("#_#")
+        for item in info:
+            print(item)
 
 
 def login(name):
